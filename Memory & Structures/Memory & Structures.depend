@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1646500385 source:c:\users\huzai\documents\github\memory-structures-c-fiverr-12\memory & structures\main.c
+1646542203 source:c:\users\huzai\documents\github\memory-structures-c-fiverr-12\memory & structures\main.c
 	<stdio.h>
 	<stdlib.h>
 	<malloc.h>

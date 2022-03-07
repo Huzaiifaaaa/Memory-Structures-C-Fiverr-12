@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include <malloc.h>
 
-#define MAX_RECORDS 100
-
 int Menu();
+void Pet();
 void addRecord();
 void printNumberOfRecords();
 void getDBSize();
@@ -18,10 +17,11 @@ struct Personal_recored
     char Last_name[10];
     char Date_of_Birth[10];
     char ID_Number[6];
+    char Pet_Preferance[8];
 }
 
 typedef Personal_recored;
-Personal_recored *adder[MAX_RECORDS];
+Personal_recored *adder[100];
 int lastRecordIndex = 0;
 int size_DB = 0;
 int counter = 0;
@@ -43,10 +43,25 @@ void addRecord()
     printf("Enter Id Number: ");
     scanf("%s", person->ID_Number);
 
-    printf("Record Added!!\n\n");
+    Pet();
+    printf("Enter Pet Preferance: ");
+    scanf("%s", person->Pet_Preferance);
+
+    printf("\nRecord Added!!\n\n");
     lastRecordIndex++;
     counter++;
     size_DB = sizeof(Personal_recored) * (lastRecordIndex+1);
+}
+
+void Pet()
+{
+        printf("\n");
+        printf("Pet Preferance:\n");
+        printf("---------------\n");
+        printf("1-Cat\n");
+        printf("2-Dog\n");
+        printf("3-Iguana\n");
+        printf("4-Other\n");
 }
 
 void printNumberOfRecords()
@@ -75,7 +90,13 @@ void printRecords()
         printf("-------------------\n");
         for(i = 0; i < lastRecordIndex; i++)
         {
-            printf("%s | %s | %s | %s \n",adder[i]->First_name, adder[i]->Last_name, adder[i]->Date_of_Birth, adder[i]->ID_Number);
+            printf("\nRecord %d\n",i+1);
+            printf("First Name: %s\n",adder[i]->First_name);
+            printf("Last Name: %s\n",adder[i]->Last_name);
+            printf("Date Of Birth: %s\n",adder[i]->Date_of_Birth);
+            printf("ID Number: %s\n",adder[i]->ID_Number);
+            printf("Pet Preferance: %s\n",adder[i]->Pet_Preferance);
+            //printf("%s | %s | %s | %s | %s\n",adder[i]->First_name, adder[i]->Last_name, adder[i]->Date_of_Birth, adder[i]->ID_Number,adder[i]->Pet_Preferance);
             counter++;
         }
     }
